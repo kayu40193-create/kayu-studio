@@ -1,0 +1,649 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d0c">
+<meta name="description" content="Kayu Studio - تصميم المواقع وتطوير التطبيقات والمتاجر الإلكترونية.">
+<title>Kayu Studio | نصنع أفكارك الرقمية</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#080d0c;
+  --surface:#101916;
+  --green:#16d69a;
+  --white:#f5fff9;
+  --muted:#9aaca4;
+  --border:rgba(255,255,255,.09);
+}
+
+* {box-sizing:border-box;margin:0;padding:0}
+
+html {scroll-behavior:smooth}
+
+body {
+  background:var(--bg);
+  color:var(--white);
+  font-family:'Cairo',sans-serif;
+  overflow-x:hidden;
+}
+
+body.en {font-family:'Inter',sans-serif}
+
+a {text-decoration:none;color:inherit}
+
+button {font-family:inherit;cursor:pointer}
+
+.container {
+  width:min(1120px,90%);
+  margin:auto;
+}
+
+header {
+  height:82px;
+  display:flex;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(8,13,12,.91);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid var(--border);
+}
+
+.nav {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.logo {
+  font-family:Inter,sans-serif;
+  font-size:25px;
+  font-weight:800;
+  letter-spacing:-1px;
+}
+
+.logo span {color:var(--green)}
+
+.links {
+  display:flex;
+  align-items:center;
+  gap:27px;
+}
+
+.links a {
+  color:var(--muted);
+  font-size:13px;
+  transition:.3s;
+}
+
+.links a:hover {color:var(--green)}
+
+.nav-actions {
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.lang {
+  border:1px solid var(--border);
+  color:white;
+  background:var(--surface);
+  border-radius:9px;
+  padding:9px 13px;
+}
+
+.menu {
+  display:none;
+  background:none;
+  border:0;
+  color:white;
+  font-size:25px;
+}
+
+.hero {
+  min-height:650px;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.glow {
+  position:absolute;
+  width:450px;
+  height:450px;
+  background:var(--green);
+  opacity:.09;
+  filter:blur(130px);
+  border-radius:50%;
+  top:80px;
+  left:5%;
+  pointer-events:none;
+}
+
+.hero-content {
+  position:relative;
+  z-index:2;
+  max-width:780px;
+  padding:100px 0;
+}
+
+.tag {
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  border:1px solid rgba(22,214,154,.25);
+  background:rgba(22,214,154,.07);
+  color:var(--green);
+  padding:8px 15px;
+  border-radius:30px;
+  font-size:12px;
+  margin-bottom:28px;
+}
+
+.dot {
+  width:7px;
+  height:7px;
+  background:var(--green);
+  border-radius:50%;
+  box-shadow:0 0 12px var(--green);
+}
+
+h1 {
+  font-size:clamp(42px,7vw,76px);
+  line-height:1.25;
+  font-weight:900;
+  letter-spacing:-2px;
+  margin-bottom:24px;
+}
+
+h1 span {
+  color:var(--green);
+}
+
+.hero p {
+  color:var(--muted);
+  max-width:620px;
+  font-size:16px;
+  line-height:2.1;
+  margin-bottom:32px;
+}
+
+.buttons {
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+}
+
+.btn {
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  padding:14px 25px;
+  border-radius:10px;
+  font-weight:700;
+  font-size:14px;
+  transition:.3s;
+}
+
+.primary {
+  background:var(--green);
+  color:#06140f;
+}
+
+.primary:hover {
+  transform:translateY(-4px);
+  box-shadow:0 10px 30px rgba(22,214,154,.2);
+}
+
+.secondary {
+  border:1px solid var(--border);
+  color:white;
+}
+
+.secondary:hover {
+  border-color:var(--green);
+  color:var(--green);
+}
+
+section {padding:95px 0}
+
+.section-head {
+  margin-bottom:45px;
+}
+
+.small-title {
+  color:var(--green);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:1px;
+  margin-bottom:12px;
+}
+
+.section-head h2 {
+  font-size:clamp(29px,4vw,42px);
+  font-weight:900;
+}
+
+.section-head p {
+  color:var(--muted);
+  margin-top:12px;
+  line-height:1.9;
+  font-size:14px;
+}
+
+.services-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:17px;
+}
+
+.card {
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:17px;
+  padding:27px 21px;
+  transition:.3s;
+}
+
+.card:hover {
+  transform:translateY(-7px);
+  border-color:rgba(22,214,154,.5);
+}
+
+.icon {
+  width:51px;
+  height:51px;
+  border-radius:13px;
+  background:rgba(22,214,154,.1);
+  display:grid;
+  place-items:center;
+  font-size:24px;
+  margin-bottom:23px;
+}
+
+.card h3 {
+  font-size:17px;
+  margin-bottom:12px;
+}
+
+.card p {
+  font-size:12px;
+  color:var(--muted);
+  line-height:2;
+}
+
+.portfolio {
+  background:#0b1210;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+.projects {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.project {
+  overflow:hidden;
+  border-radius:17px;
+  border:1px solid var(--border);
+  background:var(--surface);
+}
+
+.project-visual {
+  height:190px;
+  display:grid;
+  place-items:center;
+  font-size:55px;
+  background:linear-gradient(135deg,#102b20,#10201c);
+}
+
+.project:nth-child(2) .project-visual {
+  background:linear-gradient(135deg,#152c38,#111d29);
+}
+
+.project:nth-child(3) .project-visual {
+  background:linear-gradient(135deg,#282039,#151321);
+}
+
+.project-info {padding:22px}
+
+.project-info h3 {font-size:17px;margin-bottom:8px}
+
+.project-info p {
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.9;
+}
+
+.about-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+  align-items:center;
+}
+
+.about-box {
+  min-height:300px;
+  border:1px solid rgba(22,214,154,.2);
+  border-radius:22px;
+  background:radial-gradient(circle at center,rgba(22,214,154,.12),transparent 65%),var(--surface);
+  display:grid;
+  place-items:center;
+  text-align:center;
+}
+
+.about-logo {
+  font-family:Inter,sans-serif;
+  font-size:45px;
+  font-weight:900;
+}
+
+.about-logo span {color:var(--green)}
+
+.about-text p {
+  color:var(--muted);
+  font-size:14px;
+  line-height:2.2;
+  margin-top:18px;
+}
+
+.contact {
+  background:linear-gradient(120deg,#0d2019,#0b1210);
+  border-top:1px solid var(--border);
+  text-align:center;
+}
+
+.contact-content {
+  max-width:650px;
+  margin:auto;
+}
+
+.contact-content p {
+  color:var(--muted);
+  line-height:2;
+  margin:20px 0 28px;
+}
+
+footer {
+  padding:30px 0;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+  font-size:12px;
+}
+
+.footer-inner {
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+.footer-inner span {color:var(--green)}
+
+[dir="rtl"] .section-head {text-align:right}
+[dir="ltr"] .section-head {text-align:left}
+
+@media(max-width:850px) {
+  .services-grid {grid-template-columns:repeat(2,1fr)}
+  .links {gap:13px}
+  .links a {font-size:11px}
+}
+
+@media(max-width:600px) {
+  header {height:70px}
+  .menu {display:block}
+  .links {
+    display:none;
+    position:absolute;
+    top:70px;
+    left:0;
+    right:0;
+    padding:22px 5%;
+    background:#101916;
+    border-bottom:1px solid var(--border);
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .links.open {display:flex}
+  .links a {font-size:14px;padding:7px}
+  .logo {font-size:21px}
+  .hero {min-height:570px}
+  .hero-content {padding:75px 0}
+  h1 {font-size:43px}
+  .hero p {font-size:14px}
+  section {padding:70px 0}
+  .services-grid {grid-template-columns:1fr 1fr;gap:10px}
+  .card {padding:20px 13px}
+  .card h3 {font-size:14px}
+  .card p {font-size:11px}
+  .projects {grid-template-columns:1fr}
+  .about-grid {grid-template-columns:1fr;gap:25px}
+  .about-box {min-height:230px}
+  .buttons .btn {width:100%}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="#" class="logo">KAYU<span>.</span> STUDIO</a>
+
+    <nav class="links" id="navLinks">
+      <a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+      <a href="#services" data-ar="خدماتنا" data-en="Services">خدماتنا</a>
+      <a href="#work" data-ar="أعمالنا" data-en="Portfolio">أعمالنا</a>
+      <a href="#about" data-ar="من نحن" data-en="About">من نحن</a>
+      <a href="#contact" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="lang" onclick="toggleLanguage()">EN</button>
+      <button class="menu" onclick="toggleMenu()" aria-label="Menu">☰</button>
+    </div>
+
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="glow"></div>
+  <div class="container">
+    <div class="hero-content">
+
+      <div class="tag">
+        <span class="dot"></span>
+        <span data-ar="استوديو إبداعي للحلول الرقمية" data-en="Creative Digital Solutions Studio">استوديو إبداعي للحلول الرقمية</span>
+      </div>
+
+      <h1>
+        <span data-ar="نحوّل أفكارك" data-en="We Turn Your">نحوّل أفكارك</span>
+        <br>
+        <span data-ar="إلى واقع رقمي." data-en="Ideas Into Reality.">إلى واقع رقمي.</span>
+      </h1>
+
+      <p data-ar="في Kayu Studio نصمم ونطور تجارب رقمية تجمع بين الإبداع والتكنولوجيا. من تطبيقات الهاتف إلى المواقع والمتاجر الإلكترونية، نساعدك على تحويل فكرتك إلى مشروع رقمي مميز." data-en="At Kayu Studio, we design and develop digital experiences combining creativity and technology. From mobile apps to websites and online stores, we help turn your ideas into digital products.">
+        في Kayu Studio نصمم ونطور تجارب رقمية تجمع بين الإبداع والتكنولوجيا. من تطبيقات الهاتف إلى المواقع والمتاجر الإلكترونية، نساعدك على تحويل فكرتك إلى مشروع رقمي مميز.
+      </p>
+
+      <div class="buttons">
+        <a href="#contact" class="btn primary" data-ar="ابدأ مشروعك الآن ↗" data-en="Start Your Project ↗">ابدأ مشروعك الآن ↗</a>
+        <a href="#work" class="btn secondary" data-ar="اكتشف أعمالنا" data-en="Explore Our Work">اكتشف أعمالنا</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+
+    <div class="section-head">
+      <div class="small-title" data-ar="ماذا نقدم؟" data-en="WHAT WE DO">ماذا نقدم؟</div>
+      <h2 data-ar="حلول رقمية تصنع الفرق." data-en="Digital Solutions That Matter.">حلول رقمية تصنع الفرق.</h2>
+      <p data-ar="كل ما تحتاجه لبناء حضورك الرقمي في مكان واحد." data-en="Everything you need to build your digital presence in one place.">كل ما تحتاجه لبناء حضورك الرقمي في مكان واحد.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <article class="card">
+        <div class="icon">📱</div>
+        <h3 data-ar="تطوير تطبيقات Android" data-en="Android App Development">تطوير تطبيقات Android</h3>
+        <p data-ar="تطبيقات عملية وعصرية مصممة لتقديم تجربة استخدام مميزة." data-en="Modern Android applications designed for excellent user experiences.">تطبيقات عملية وعصرية مصممة لتقديم تجربة استخدام مميزة.</p>
+      </article>
+
+      <article class="card">
+        <div class="icon">🌐</div>
+        <h3 data-ar="تصميم المواقع" data-en="Website Design">تصميم المواقع</h3>
+        <p data-ar="مواقع احترافية سريعة ومتجاوبة مع جميع الشاشات." data-en="Professional, fast and responsive websites for every screen.">مواقع احترافية سريعة ومتجاوبة مع جميع الشاشات.</p>
+      </article>
+
+      <article class="card">
+        <div class="icon">🎨</div>
+        <h3 data-ar="التصميم والهوية" data-en="Branding & UI Design">التصميم والهوية</h3>
+        <p data-ar="شعارات وهويات بصرية وواجهات مستخدم جذابة." data-en="Creative logos, visual identities and beautiful user interfaces.">شعارات وهويات بصرية وواجهات مستخدم جذابة.</p>
+      </article>
+
+      <article class="card">
+        <div class="icon">🛍️</div>
+        <h3 data-ar="المتاجر الإلكترونية" data-en="E-commerce Stores">المتاجر الإلكترونية</h3>
+        <p data-ar="متاجر إلكترونية تساعد مشروعك على الوصول إلى عملائه." data-en="Online stores that help your business reach more customers.">متاجر إلكترونية تساعد مشروعك على الوصول إلى عملائه.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="portfolio" id="work">
+  <div class="container">
+
+    <div class="section-head">
+      <div class="small-title" data-ar="معرض الأعمال" data-en="OUR PORTFOLIO">معرض الأعمال</div>
+      <h2 data-ar="أفكار تتحول إلى مشاريع." data-en="Ideas Become Projects.">أفكار تتحول إلى مشاريع.</h2>
+      <p data-ar="نماذج توضيحية لأنواع المشاريع التي يمكننا تنفيذها." data-en="Concept examples of projects we can create.">نماذج توضيحية لأنواع المشاريع التي يمكننا تنفيذها.</p>
+    </div>
+
+    <div class="projects">
+
+      <article class="project">
+        <div class="project-visual">📱</div>
+        <div class="project-info">
+          <h3 data-ar="تطبيقات الهاتف" data-en="Mobile Applications">تطبيقات الهاتف</h3>
+          <p data-ar="تصميم وتطوير تطبيقات Android." data-en="Android application design and development.">تصميم وتطوير تطبيقات Android.</p>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-visual">💻</div>
+        <div class="project-info">
+          <h3 data-ar="المواقع الإلكترونية" data-en="Websites">المواقع الإلكترونية</h3>
+          <p data-ar="مواقع عصرية للشركات والأعمال." data-en="Modern websites for businesses and companies.">مواقع عصرية للشركات والأعمال.</p>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-visual">🛒</div>
+        <div class="project-info">
+          <h3 data-ar="المتاجر الرقمية" data-en="Online Stores">المتاجر الرقمية</h3>
+          <p data-ar="حلول متكاملة للتجارة الإلكترونية." data-en="Complete e-commerce solutions.">حلول متكاملة للتجارة الإلكترونية.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container about-grid">
+
+    <div class="about-box">
+      <div>
+        <div class="about-logo">KAYU<span>.</span></div>
+        <div style="color:#9aaca4;font-size:13px;letter-spacing:4px">STUDIO</div>
+      </div>
+    </div>
+
+    <div class="about-text">
+      <div class="small-title" data-ar="من نحن" data-en="ABOUT US">من نحن</div>
+
+      <h2 data-ar="الإبداع يلتقي بالتكنولوجيا." data-en="Where Creativity Meets Technology.">الإبداع يلتقي بالتكنولوجيا.</h2>
+
+      <p data-ar="Kayu Studio استوديو تقني يهتم بتطوير الحلول الرقمية وتصميم التجارب الإلكترونية. نؤمن أن كل فكرة تستحق أن تتحول إلى شيء حقيقي ومميز، ونعمل على تقديم حلول تجمع بين الجمال والوظيفة." data-en="Kayu Studio is a digital studio focused on developing digital solutions and designing online experiences. We believe every idea deserves to become something real and unique.">
+        Kayu Studio استوديو تقني يهتم بتطوير الحلول الرقمية وتصميم التجارب الإلكترونية. نؤمن أن كل فكرة تستحق أن تتحول إلى شيء حقيقي ومميز، ونعمل على تقديم حلول تجمع بين الجمال والوظيفة.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container contact-content">
+
+    <div class="small-title" data-ar="لديك فكرة؟" data-en="HAVE AN IDEA?">لديك فكرة؟</div>
+
+    <h2 style="font-size:clamp(30px,5vw,48px)" data-ar="دعنا نبني شيئاً رائعاً معاً." data-en="Let's Build Something Great Together.">دعنا نبني شيئاً رائعاً معاً.</h2>
+
+    <p data-ar="أخبرنا عن فكرتك ومشروعك، ولنبدأ رحلتنا نحو تحويلها إلى واقع رقمي." data-en="Tell us about your idea and let's start turning it into a digital reality.">أخبرنا عن فكرتك ومشروعك، ولنبدأ رحلتنا نحو تحويلها إلى واقع رقمي.</p>
+
+    <a class="btn primary" href="mailto:YOUR_EMAIL@example.com" data-ar="تواصل معنا عبر البريد ↗" data-en="Contact Us By Email ↗">تواصل معنا عبر البريد ↗</a>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <a href="#" class="logo">KAYU<span>.</span> STUDIO</a>
+    <p>© <span id="year"></span> Kayu Studio. <span data-ar="جميع الحقوق محفوظة." data-en="All Rights Reserved.">جميع الحقوق محفوظة.</span></p>
+  </div>
+</footer>
+
+<script>
+let currentLang = 'ar';
+
+function toggleLanguage() {
+  currentLang = currentLang === 'ar' ? 'en' : 'ar';
+
+  document.documentElement.lang = currentLang;
+  document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+
+  document.body.classList.toggle('en', currentLang === 'en');
+
+  document.querySelectorAll('[data-ar]').forEach(element => {
+    element.textContent = element.getAttribute('data-' + currentLang);
+  });
+
+  document.querySelector('.lang').textContent =
+    currentLang === 'ar' ? 'EN' : 'AR';
+}
+
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+document.querySelectorAll('.links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
