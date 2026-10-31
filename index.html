@@ -813,32 +813,9 @@ document.getElementById('projectForm').addEventListener('submit', function(event
   });
   close.addEventListener('click', () => box.style.display = 'none');
 
-  function reply(question) {
-    const q = question.toLowerCase();
-
-    if (q.includes('سعر') || q.includes('أسعار') || q.includes('price') || q.includes('cost')) {
-      return 'تختلف الأسعار حسب نوع المشروع ومتطلباته. أرسل تفاصيل مشروعك عبر نموذج طلب المشروع وسيتواصل معك فريق Kayu Studio.';
-    }
-    if (q.includes('تطبيق') || q.includes('app') || q.includes('application')) {
-      return 'نساعدك في تحويل فكرتك إلى تطبيق أندرويد. أخبرنا بفكرتك عبر نموذج طلب المشروع.';
-    }
-    if (q.includes('موقع') || q.includes('website') || q.includes('web')) {
-      return 'نقدم خدمات تصميم وتطوير المواقع الإلكترونية بشكل متجاوب مع الهاتف والتابلت.';
-    }
-    if (q.includes('متجر') || q.includes('store') || q.includes('ecommerce')) {
-      return 'نساعدك في إنشاء المتاجر الإلكترونية لعرض المنتجات واستقبال طلبات العملاء.';
-    }
-    if (q.includes('تواصل') || q.includes('واتساب') || q.includes('contact')) {
-      return 'يمكنك التواصل معنا مباشرة عبر زر واتساب الموجود في الموقع.';
-    }
-    if (q.includes('مرحبا') || q.includes('السلام') || q.includes('hello') || q.includes('hi')) {
-      return 'أهلاً بك! 👋 يسعدنا مساعدتك. هل تريد إنشاء تطبيق أم موقع أم متجر إلكتروني؟';
-    }
-    return 'شكراً لسؤالك! يمكنني مساعدتك بمعلومات عن التطبيقات والمواقع والمتاجر الإلكترونية. ولطلب خدمة مخصصة، استخدم نموذج طلب المشروع.';
-  }
-
-  form.addEventListener('submit', function(event) {
+  form.addEventListener('submit', async function(event) {
     event.preventDefault();
+
     const question = input.value.trim();
     if (!question) return;
 
@@ -847,13 +824,42 @@ document.getElementById('projectForm').addEventListener('submit', function(event
     userMessage.textContent = question;
     messages.appendChild(userMessage);
 
+    input.value = '';
+
     const botMessage = document.createElement('div');
     botMessage.className = 'kayu-ai-message kayu-ai-bot';
-    botMessage.textContent = reply(question);
+    botMessage.textContent = 'يفكر Kayu AI...';
     messages.appendChild(botMessage);
-
-    input.value = '';
     messages.scrollTop = messages.scrollHeight;
+
+    const submitButton = form.querySelector('button');
+    submitButton.disabled = true;
+
+    try {
+      const response = await fetch(
+        'https://kayu-ai.kayu40193.workers.dev',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: question })
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'تعذر الحصول على الإجابة');
+      }
+
+      botMessage.textContent = data.reply || 'لم تصل إجابة من المساعد.';
+    } catch (error) {
+      botMessage.textContent =
+        'عذراً، تعذر الاتصال بالمساعد حالياً. حاول مرة أخرى.';
+    } finally {
+      submitButton.disabled = false;
+      input.focus();
+      messages.scrollTop = messages.scrollHeight;
+    }
   });
 })();
 </script>
