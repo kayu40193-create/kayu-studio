@@ -749,5 +749,114 @@ document.getElementById('projectForm').addEventListener('submit', function(event
 
 </script>
 
+
+<!-- Kayu AI Assistant -->
+<style>
+#kayu-ai-button {
+  position:fixed; bottom:22px; left:22px; z-index:9999;
+  background:#087f5b; color:white; border:0; border-radius:50px;
+  padding:15px 21px; font-size:15px; font-weight:bold;
+  cursor:pointer; box-shadow:0 5px 20px #0005;
+}
+#kayu-ai-box {
+  display:none; position:fixed; bottom:85px; left:22px;
+  width:min(350px,calc(100vw - 35px)); height:440px;
+  background:#101816; color:white; border:1px solid #087f5b;
+  border-radius:17px; z-index:9999; overflow:hidden;
+  box-shadow:0 8px 30px #0008; direction:rtl;
+  font-family:Arial,sans-serif;
+}
+#kayu-ai-head {
+  background:#087f5b; padding:16px; display:flex;
+  justify-content:space-between; align-items:center;
+}
+#kayu-ai-close {background:none;border:0;color:white;font-size:23px;cursor:pointer}
+#kayu-ai-messages {height:305px;overflow-y:auto;padding:13px}
+.kayu-ai-message {padding:10px 12px;border-radius:12px;margin:8px 0;max-width:88%;line-height:1.6;font-size:14px}
+.kayu-ai-bot {background:#20332d;margin-left:auto}
+.kayu-ai-user {background:#087f5b;margin-right:auto}
+#kayu-ai-form {display:flex;gap:7px;padding:10px;border-top:1px solid #294139}
+#kayu-ai-input {flex:1;min-width:0;background:#080d0c;color:white;border:1px solid #38564a;border-radius:9px;padding:10px}
+#kayu-ai-form button {background:#087f5b;color:white;border:0;border-radius:9px;padding:0 15px;cursor:pointer}
+</style>
+
+<button id="kayu-ai-button" type="button">🤖 اسأل Kayu AI</button>
+
+<div id="kayu-ai-box">
+  <div id="kayu-ai-head">
+    <strong>🤖 Kayu AI</strong>
+    <button id="kayu-ai-close" type="button">×</button>
+  </div>
+  <div id="kayu-ai-messages">
+    <div class="kayu-ai-message kayu-ai-bot">
+      مرحباً بك في Kayu Studio! 👋
+      أنا مساعد الموقع، كيف يمكنني مساعدتك؟
+    </div>
+  </div>
+  <form id="kayu-ai-form">
+    <input id="kayu-ai-input" type="text" placeholder="اكتب سؤالك..." required>
+    <button type="submit">إرسال</button>
+  </form>
+</div>
+
+<script>
+(function () {
+  const button = document.getElementById('kayu-ai-button');
+  const box = document.getElementById('kayu-ai-box');
+  const close = document.getElementById('kayu-ai-close');
+  const form = document.getElementById('kayu-ai-form');
+  const input = document.getElementById('kayu-ai-input');
+  const messages = document.getElementById('kayu-ai-messages');
+
+  button.addEventListener('click', () => {
+    box.style.display = box.style.display === 'block' ? 'none' : 'block';
+  });
+  close.addEventListener('click', () => box.style.display = 'none');
+
+  function reply(question) {
+    const q = question.toLowerCase();
+
+    if (q.includes('سعر') || q.includes('أسعار') || q.includes('price') || q.includes('cost')) {
+      return 'تختلف الأسعار حسب نوع المشروع ومتطلباته. أرسل تفاصيل مشروعك عبر نموذج طلب المشروع وسيتواصل معك فريق Kayu Studio.';
+    }
+    if (q.includes('تطبيق') || q.includes('app') || q.includes('application')) {
+      return 'نساعدك في تحويل فكرتك إلى تطبيق أندرويد. أخبرنا بفكرتك عبر نموذج طلب المشروع.';
+    }
+    if (q.includes('موقع') || q.includes('website') || q.includes('web')) {
+      return 'نقدم خدمات تصميم وتطوير المواقع الإلكترونية بشكل متجاوب مع الهاتف والتابلت.';
+    }
+    if (q.includes('متجر') || q.includes('store') || q.includes('ecommerce')) {
+      return 'نساعدك في إنشاء المتاجر الإلكترونية لعرض المنتجات واستقبال طلبات العملاء.';
+    }
+    if (q.includes('تواصل') || q.includes('واتساب') || q.includes('contact')) {
+      return 'يمكنك التواصل معنا مباشرة عبر زر واتساب الموجود في الموقع.';
+    }
+    if (q.includes('مرحبا') || q.includes('السلام') || q.includes('hello') || q.includes('hi')) {
+      return 'أهلاً بك! 👋 يسعدنا مساعدتك. هل تريد إنشاء تطبيق أم موقع أم متجر إلكتروني؟';
+    }
+    return 'شكراً لسؤالك! يمكنني مساعدتك بمعلومات عن التطبيقات والمواقع والمتاجر الإلكترونية. ولطلب خدمة مخصصة، استخدم نموذج طلب المشروع.';
+  }
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const question = input.value.trim();
+    if (!question) return;
+
+    const userMessage = document.createElement('div');
+    userMessage.className = 'kayu-ai-message kayu-ai-user';
+    userMessage.textContent = question;
+    messages.appendChild(userMessage);
+
+    const botMessage = document.createElement('div');
+    botMessage.className = 'kayu-ai-message kayu-ai-bot';
+    botMessage.textContent = reply(question);
+    messages.appendChild(botMessage);
+
+    input.value = '';
+    messages.scrollTop = messages.scrollHeight;
+  });
+})();
+</script>
+
 </body>
 </html>
