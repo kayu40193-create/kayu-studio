@@ -432,7 +432,22 @@ footer {
   .about-box {min-height:230px}
   .buttons .btn {width:100%}
 }
-</style>
+
+.brand-logo {
+  height:48px;
+  width:auto;
+  max-width:180px;
+  object-fit:contain;
+  display:block;
+}
+
+.about-brand-logo {
+  width:min(260px,75%);
+  max-height:150px;
+  height:auto;
+  object-fit:contain;
+}
+\n</style>
 </head>
 
 <body>
@@ -440,7 +455,7 @@ footer {
 <header>
   <div class="container nav">
 
-    <a href="#" class="logo">KAYU<span>.</span> STUDIO</a>
+    <a href="#" class="logo"><img src="unnamed.jpg" alt="Kayu Studio" class="brand-logo"></a>
 
     <nav class="links" id="navLinks">
       <a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
@@ -571,10 +586,7 @@ footer {
   <div class="container about-grid">
 
     <div class="about-box">
-      <div>
-        <div class="about-logo">KAYU<span>.</span></div>
-        <div style="color:#9aaca4;font-size:13px;letter-spacing:4px">STUDIO</div>
-      </div>
+      <img src="unnamed.jpg" alt="Kayu Studio" class="about-brand-logo">
     </div>
 
     <div class="about-text">
@@ -608,7 +620,7 @@ footer {
 
 <footer>
   <div class="container footer-inner">
-    <a href="#" class="logo">KAYU<span>.</span> STUDIO</a>
+    <a href="#" class="logo"><img src="unnamed.jpg" alt="Kayu Studio" class="brand-logo"></a>
     <p>© <span id="year"></span> Kayu Studio. <span data-ar="جميع الحقوق محفوظة." data-en="All Rights Reserved.">جميع الحقوق محفوظة.</span></p>
   </div>
 </footer>
