@@ -457,6 +457,47 @@ footer {
   transform:translateY(-4px);
   box-shadow:0 10px 30px rgba(37,211,102,.2);
 }
+\n
+.project-form {
+  max-width:520px;
+  margin:35px auto;
+  padding:25px;
+  text-align:right;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:17px;
+}
+.project-form h3 {
+  margin-bottom:22px;
+  font-size:22px;
+}
+.project-form label {
+  display:block;
+  margin:15px 0 7px;
+  font-size:13px;
+}
+.project-form input,
+.project-form select,
+.project-form textarea {
+  width:100%;
+  padding:13px;
+  border-radius:9px;
+  border:1px solid var(--border);
+  background:#080d0c;
+  color:white;
+  font:inherit;
+}
+.project-form textarea {
+  resize:vertical;
+}
+.project-form button {
+  width:100%;
+  border:0;
+  margin-top:20px;
+}
+body.en .project-form {
+  text-align:left;
+}
 \n</style>
 </head>
 
@@ -621,6 +662,28 @@ footer {
 
     <p data-ar="أخبرنا عن فكرتك ومشروعك، ولنبدأ رحلتنا نحو تحويلها إلى واقع رقمي." data-en="Tell us about your idea and let's start turning it into a digital reality.">أخبرنا عن فكرتك ومشروعك، ولنبدأ رحلتنا نحو تحويلها إلى واقع رقمي.</p>
 
+
+    <form id="projectForm" class="project-form">
+      <h3 data-ar="أرسل طلب مشروعك" data-en="Send Your Project Request">أرسل طلب مشروعك</h3>
+
+      <label for="clientName" data-ar="اسمك" data-en="Your Name">اسمك</label>
+      <input id="clientName" type="text" required placeholder="اكتب اسمك">
+
+      <label for="projectService" data-ar="الخدمة المطلوبة" data-en="Service Needed">الخدمة المطلوبة</label>
+      <select id="projectService" required>
+        <option value="تطوير تطبيق Android">تطوير تطبيق Android</option>
+        <option value="تصميم موقع إلكتروني">تصميم موقع إلكتروني</option>
+        <option value="تصميم شعار وهوية بصرية">تصميم شعار وهوية بصرية</option>
+        <option value="إنشاء متجر إلكتروني">إنشاء متجر إلكتروني</option>
+        <option value="خدمة أخرى">خدمة أخرى</option>
+      </select>
+
+      <label for="projectDetails" data-ar="تفاصيل المشروع" data-en="Project Details">تفاصيل المشروع</label>
+      <textarea id="projectDetails" rows="4" required placeholder="اشرح لنا فكرتك..."></textarea>
+
+      <button type="submit" class="btn primary" data-ar="إرسال الطلب عبر واتساب ↗" data-en="Send Request via WhatsApp ↗">إرسال الطلب عبر واتساب ↗</button>
+    </form>
+
     <a class="btn primary" href="mailto:YOUR_EMAIL@example.com" data-ar="تواصل معنا عبر البريد ↗" data-en="Contact Us By Email ↗">تواصل معنا عبر البريد ↗</a>
     <a class="btn whatsapp" href="https://wa.me/962775240456" target="_blank" rel="noopener noreferrer" data-ar="تواصل معنا عبر واتساب ↗" data-en="Chat With Us on WhatsApp ↗">تواصل معنا عبر واتساب ↗</a>
 
@@ -666,7 +729,24 @@ document.querySelectorAll('.links a').forEach(link => {
 });
 
 document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+
+document.getElementById('projectForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('clientName').value.trim();
+  const service = document.getElementById('projectService').value;
+  const details = document.getElementById('projectDetails').value.trim();
+
+  const message = `مرحباً Kayu Studio، أريد طلب مشروع جديد.
+
+الاسم: ${name}
+الخدمة: ${service}
+تفاصيل المشروع: ${details}`;
+
+  const url = 'https://wa.me/962775240456?text=' + encodeURIComponent(message);
+  window.open(url, '_blank');
+});
+\n</script>
 
 </body>
 </html>
