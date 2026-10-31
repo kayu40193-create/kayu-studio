@@ -810,9 +810,13 @@ document.getElementById('projectForm').addEventListener('submit', function(event
   const input = document.getElementById('kayu-ai-input');
   const messages = document.getElementById('kayu-ai-messages');
 
+  // ذاكرة مؤقتة للمحادثة الحالية
+  const kayuAIHistory = [];
+
   button.addEventListener('click', () => {
     box.style.display = box.style.display === 'block' ? 'none' : 'block';
   });
+
   close.addEventListener('click', () => box.style.display = 'none');
 
   form.addEventListener('submit', async function(event) {
@@ -843,7 +847,10 @@ document.getElementById('projectForm').addEventListener('submit', function(event
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: question })
+          body: JSON.stringify({
+            message: question,
+            history: kayuAIHistory.slice(-10)
+          })
         }
       );
 
@@ -853,7 +860,18 @@ document.getElementById('projectForm').addEventListener('submit', function(event
         throw new Error(data.error || 'تعذر الحصول على الإجابة');
       }
 
-      botMessage.textContent = data.reply || 'لم تصل إجابة من المساعد.';
+      const reply = data.reply || 'لم تصل إجابة من المساعد.';
+      botMessage.textContent = reply;
+
+      kayuAIHistory.push(
+        { role: 'user', content: question },
+        { role: 'assistant', content: reply }
+      );
+
+      if (kayuAIHistory.length > 10) {
+        kayuAIHistory.splice(0, kayuAIHistory.length - 10);
+      }
+
     } catch (error) {
       botMessage.textContent =
         'عذراً، تعذر الاتصال بالمساعد حالياً. حاول مرة أخرى.';
@@ -863,7 +881,6 @@ document.getElementById('projectForm').addEventListener('submit', function(event
       messages.scrollTop = messages.scrollHeight;
     }
   });
-})();
 </script>
 
 </body>
