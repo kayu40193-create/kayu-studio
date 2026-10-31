@@ -499,92 +499,45 @@ body.en .project-form {
   text-align:left;
 }
 \n
-/* Kayu Project Customizer */
-.customize-section {
-  padding: 90px 0;
-  background: linear-gradient(180deg, #0b1210, #080d0c);
-}
-.custom-project-form {
-  max-width: 850px;
-  margin: 35px auto 0;
-  display: grid;
-  gap: 22px;
-}
-.custom-step {
-  background: #101816;
-  border: 1px solid #1c3029;
-  border-radius: 18px;
-  padding: 26px;
-}
-.custom-number {
-  display: inline-flex;
-  color: #35c995;
-  font-size: 13px;
-  font-weight: bold;
-  margin-bottom: 12px;
-}
-.custom-step h3 {
-  color: white;
-  margin: 0 0 20px;
-  font-size: 19px;
-}
-.custom-step select,
-.custom-step input[type="text"],
-.custom-step textarea {
-  width: 100%;
-  padding: 14px;
-  border: 1px solid #294138;
-  border-radius: 10px;
-  background: #080d0c;
-  color: white;
-  font: inherit;
-  outline: none;
-}
-.custom-step select:focus,
-.custom-step input:focus,
-.custom-step textarea:focus {
-  border-color: #087f5b;
-}
-.custom-options {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-.custom-options label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px;
-  background: #0b1210;
-  border: 1px solid #294138;
-  border-radius: 10px;
-  color: #e8f4ef;
-  cursor: pointer;
-}
-.custom-options label:has(input:checked) {
-  border-color: #087f5b;
-  background: #0d2920;
-}
-.custom-options input {
-  accent-color: #087f5b;
-  width: 17px;
-  height: 17px;
-}
-.custom-step textarea {
-  margin-top: 14px;
-  resize: vertical;
-}
-.custom-submit {
-  width: 100%;
-  border: 0;
-  cursor: pointer;
-  font: inherit;
-  padding: 16px;
-}
-@media (max-width: 600px) {
-  .customize-section { padding: 60px 0; }
-  .custom-step { padding: 19px; }
-  .custom-options { grid-template-columns: 1fr; }
+
+/* Kayu Project Customizer - Wizard */
+.customize-section { padding: 90px 0; background: linear-gradient(180deg,#0b1210,#080d0c); }
+.custom-project-form { max-width: 850px; margin: 35px auto 0; display: grid; gap: 20px; }
+.custom-progress,.custom-step { background:#101816; border:1px solid #1c3029; border-radius:18px; padding:25px; }
+.custom-progress-top { display:flex; justify-content:space-between; gap:12px; color:#dcece5; font-size:14px; margin-bottom:12px; }
+.custom-progress-track { height:8px; background:#26352f; border-radius:20px; overflow:hidden; }
+.custom-progress-track span { display:block; width:25%; height:100%; background:#18a878; border-radius:20px; transition:width .25s; }
+.custom-step { display:none; }
+.custom-step.active { display:block; animation:customFade .25s ease; }
+@keyframes customFade { from { opacity:.4; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+.custom-number { display:inline-flex; color:#35c995; font-size:13px; font-weight:bold; margin-bottom:12px; }
+.custom-step h3 { color:white; margin:0 0 18px; font-size:19px; }
+.custom-hint { color:#a9bdb4; margin:-8px 0 18px; }
+.custom-type-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.custom-type-card { display:flex; align-items:center; gap:12px; padding:17px; background:#0b1210; border:1px solid #294138; border-radius:12px; color:#e8f4ef; cursor:pointer; }
+.custom-type-card span { font-size:25px; }
+.custom-type-card input { accent-color:#087f5b; }
+.custom-type-card:has(input:checked) { border-color:#18a878; background:#0d2920; }
+.custom-options { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.custom-options label { display:flex; align-items:center; gap:10px; padding:14px; background:#0b1210; border:1px solid #294138; border-radius:10px; color:#e8f4ef; cursor:pointer; }
+.custom-options label:has(input:checked) { border-color:#087f5b; background:#0d2920; }
+.custom-options input { accent-color:#087f5b; width:17px; height:17px; }
+.custom-step select,.custom-step input[type="text"],.custom-step textarea { width:100%; padding:14px; border:1px solid #294138; border-radius:10px; background:#080d0c; color:white; font:inherit; outline:none; margin-bottom:15px; }
+.custom-step select:focus,.custom-step input:focus,.custom-step textarea:focus { border-color:#087f5b; }
+.custom-field-label { display:block; color:#dcece5; margin:12px 0 8px; }
+.custom-preview { margin-top:18px; padding:20px; border:1px solid #087f5b; border-radius:14px; background:#0b1b15; color:#e8f4ef; }
+.custom-preview h3 { margin-top:0; }
+.custom-preview p { margin:8px 0; line-height:1.7; overflow-wrap:anywhere; }
+.custom-wizard-buttons { display:flex; justify-content:space-between; gap:12px; }
+.custom-wizard-buttons button { min-width:120px; cursor:pointer; font:inherit; }
+.custom-wizard-buttons button:disabled { opacity:.4; cursor:not-allowed; }
+.custom-submit { width:100%; border:0; cursor:pointer; font:inherit; padding:16px; margin-top:15px; }
+body.en .custom-project-form { text-align:left; }
+@media(max-width:600px) {
+  .customize-section { padding:60px 0; }
+  .custom-step,.custom-progress { padding:19px; }
+  .custom-options,.custom-type-grid { grid-template-columns:1fr; }
+  .custom-wizard-buttons button { flex:1; min-width:0; }
 }
 
 </style>
@@ -687,65 +640,87 @@ body.en .project-form {
 </section>
 
 
+
 <section id="customize" class="customize-section">
   <div class="container">
     <div class="section-head">
       <div class="small-title" data-ar="مشروعك يبدأ من هنا" data-en="YOUR PROJECT STARTS HERE">مشروعك يبدأ من هنا</div>
-      <h2 data-ar="خصّص مشروعك بنفسك." data-en="Customize Your Project.">خصّص مشروعك بنفسك.</h2>
-      <p data-ar="اختر ما تحتاجه، وسنساعدك على تحويل فكرتك إلى مشروع حقيقي." data-en="Choose what you need, and we'll help turn your idea into reality.">اختر ما تحتاجه، وسنساعدك على تحويل فكرتك إلى مشروع حقيقي.</p>
+      <h2 data-ar="اصنع مشروعك بطريقتك." data-en="Build Your Project Your Way.">اصنع مشروعك بطريقتك.</h2>
+      <p data-ar="أربع خطوات بسيطة لتحويل فكرتك إلى طلب واضح." data-en="Four simple steps to turn your idea into a clear project brief.">أربع خطوات بسيطة لتحويل فكرتك إلى طلب واضح.</p>
     </div>
 
     <form id="customProjectForm" class="custom-project-form">
-      <div class="custom-step">
-        <span class="custom-number">01</span>
-        <h3 data-ar="ما نوع المشروع الذي تريده؟" data-en="What type of project do you need?">ما نوع المشروع الذي تريده؟</h3>
-        <select id="customType" required>
-          <option value="" data-ar="اختر نوع المشروع" data-en="Choose project type">اختر نوع المشروع</option>
-          <option value="تطبيق أندرويد">تطبيق أندرويد</option>
-          <option value="موقع إلكتروني">موقع إلكتروني</option>
-          <option value="متجر إلكتروني">متجر إلكتروني</option>
-          <option value="تصميم شعار أو واجهة">تصميم شعار أو واجهة</option>
-          <option value="مشروع آخر">مشروع آخر</option>
-        </select>
+      <div class="custom-progress">
+        <div class="custom-progress-top">
+          <span id="customStepLabel">الخطوة 1 من 4</span>
+          <span id="customProgressPercent">25%</span>
+        </div>
+        <div class="custom-progress-track"><span id="customProgressBar"></span></div>
       </div>
 
-      <div class="custom-step">
-        <span class="custom-number">02</span>
-        <h3 data-ar="ما الميزات التي تحتاجها؟" data-en="Which features do you need?">ما الميزات التي تحتاجها؟</h3>
-        <div class="custom-options">
-          <label><input type="checkbox" name="customFeature" value="تسجيل الدخول والحسابات"><span>تسجيل الدخول والحسابات</span></label>
-          <label><input type="checkbox" name="customFeature" value="لوحة تحكم للإدارة"><span>لوحة تحكم للإدارة</span></label>
-          <label><input type="checkbox" name="customFeature" value="الدفع الإلكتروني"><span>الدفع الإلكتروني</span></label>
-          <label><input type="checkbox" name="customFeature" value="الإشعارات"><span>الإشعارات</span></label>
-          <label><input type="checkbox" name="customFeature" value="المحادثات والتواصل"><span>المحادثات والتواصل</span></label>
-          <label><input type="checkbox" name="customFeature" value="البحث والتصفية"><span>البحث والتصفية</span></label>
+      <div class="custom-step wizard-step active" data-step="0">
+        <span class="custom-number">01</span>
+        <h3 data-ar="ما نوع المشروع الذي تريده؟" data-en="What type of project do you need?">ما نوع المشروع الذي تريده؟</h3>
+        <div class="custom-type-grid">
+          <label class="custom-type-card"><input type="radio" name="customType" value="app" required><span>📱</span><b data-ar="تطبيق أندرويد" data-en="Android App">تطبيق أندرويد</b></label>
+          <label class="custom-type-card"><input type="radio" name="customType" value="website"><span>🌐</span><b data-ar="موقع إلكتروني" data-en="Website">موقع إلكتروني</b></label>
+          <label class="custom-type-card"><input type="radio" name="customType" value="store"><span>🛍️</span><b data-ar="متجر إلكتروني" data-en="Online Store">متجر إلكتروني</b></label>
+          <label class="custom-type-card"><input type="radio" name="customType" value="design"><span>🎨</span><b data-ar="تصميم وهوية" data-en="Branding & Design">تصميم وهوية</b></label>
+          <label class="custom-type-card"><input type="radio" name="customType" value="other"><span>💡</span><b data-ar="مشروع آخر" data-en="Other Project">مشروع آخر</b></label>
         </div>
       </div>
 
-      <div class="custom-step">
+      <div class="custom-step wizard-step" data-step="1">
+        <span class="custom-number">02</span>
+        <h3 data-ar="اختر الميزات التي تحتاجها" data-en="Choose the features you need">اختر الميزات التي تحتاجها</h3>
+        <p class="custom-hint" data-ar="يمكنك اختيار أكثر من ميزة." data-en="You can select more than one feature.">يمكنك اختيار أكثر من ميزة.</p>
+        <div id="customFeatureOptions" class="custom-options"></div>
+      </div>
+
+      <div class="custom-step wizard-step" data-step="2">
         <span class="custom-number">03</span>
-        <h3 data-ar="اختر اللون المفضل" data-en="Choose your preferred color">اختر اللون المفضل</h3>
+        <h3 data-ar="اختر الهوية البصرية" data-en="Choose the visual identity">اختر الهوية البصرية</h3>
+        <label class="custom-field-label" for="customColor" data-ar="اللون المفضل" data-en="Preferred color">اللون المفضل</label>
         <select id="customColor">
-          <option value="الأخضر">الأخضر</option>
-          <option value="الأزرق">الأزرق</option>
-          <option value="الأسود">الأسود</option>
-          <option value="الأبيض">الأبيض</option>
-          <option value="ألوان متعددة">ألوان متعددة</option>
-          <option value="اترك الاختيار للاستوديو">اترك الاختيار للاستوديو</option>
+          <option value="الأخضر" data-en="Green">الأخضر</option>
+          <option value="الأزرق" data-en="Blue">الأزرق</option>
+          <option value="الأسود" data-en="Black">الأسود</option>
+          <option value="الأبيض" data-en="White">الأبيض</option>
+          <option value="ألوان متعددة" data-en="Multiple colors">ألوان متعددة</option>
+          <option value="اترك الاختيار للاستوديو" data-en="Studio choice">اترك الاختيار للاستوديو</option>
+        </select>
+        <label class="custom-field-label" for="customStyle" data-ar="أسلوب التصميم" data-en="Design style">أسلوب التصميم</label>
+        <select id="customStyle">
+          <option value="عصري وبسيط" data-en="Modern and minimal">عصري وبسيط</option>
+          <option value="احترافي ورسمي" data-en="Professional and formal">احترافي ورسمي</option>
+          <option value="جريء ومميز" data-en="Bold and distinctive">جريء ومميز</option>
+          <option value="هادئ وأنيق" data-en="Calm and elegant">هادئ وأنيق</option>
+          <option value="اترك الاختيار للاستوديو" data-en="Studio choice">اترك الاختيار للاستوديو</option>
         </select>
       </div>
 
-      <div class="custom-step">
+      <div class="custom-step wizard-step" data-step="3">
         <span class="custom-number">04</span>
-        <h3 data-ar="أخبرنا المزيد عن فكرتك" data-en="Tell us more about your idea">أخبرنا المزيد عن فكرتك</h3>
-        <input id="customName" type="text" placeholder="اسمك" required>
-        <textarea id="customDetails" rows="5" placeholder="اكتب تفاصيل إضافية عن مشروعك..."></textarea>
+        <h3 data-ar="تفاصيلك ومعاينة الطلب" data-en="Your details and project preview">تفاصيلك ومعاينة الطلب</h3>
+        <label class="custom-field-label" for="customName" data-ar="اسمك" data-en="Your name">اسمك</label>
+        <input id="customName" type="text" required maxlength="80" placeholder="اسمك" data-placeholder-ar="اسمك" data-placeholder-en="Your name">
+        <label class="custom-field-label" for="customDetails" data-ar="تفاصيل إضافية عن فكرتك" data-en="Additional project details">تفاصيل إضافية عن فكرتك</label>
+        <textarea id="customDetails" rows="4" maxlength="1500" placeholder="اكتب تفاصيل مشروعك هنا..." data-placeholder-ar="اكتب تفاصيل مشروعك هنا..." data-placeholder-en="Describe your project here..."></textarea>
+        <div class="custom-preview">
+          <h3 data-ar="معاينة طلبك" data-en="Your project summary">معاينة طلبك</h3>
+          <div id="customPreviewContent" aria-live="polite"></div>
+        </div>
+        <button type="submit" class="btn primary custom-submit" data-ar="إرسال الطلب عبر واتساب ↗" data-en="Send Request via WhatsApp ↗">إرسال الطلب عبر واتساب ↗</button>
       </div>
 
-      <button type="submit" class="btn primary custom-submit" data-ar="إرسال تفاصيل مشروعي ↗" data-en="Send My Project Details ↗">إرسال تفاصيل مشروعي ↗</button>
+      <div class="custom-wizard-buttons">
+        <button type="button" id="customPrev" class="btn secondary" disabled data-ar="السابق" data-en="Back">السابق</button>
+        <button type="button" id="customNext" class="btn primary" data-ar="التالي ←" data-en="Next →">التالي ←</button>
+      </div>
     </form>
   </div>
 </section>
+
 
 <section class="portfolio" id="work">
   <div class="container">
@@ -869,6 +844,10 @@ function toggleLanguage() {
 
   document.querySelector('.lang').textContent =
     currentLang === 'ar' ? 'EN' : 'AR';
+
+  if (typeof updateCustomizerLanguage === 'function') {
+    updateCustomizerLanguage();
+  }
 }
 
 function toggleMenu() {
@@ -900,33 +879,224 @@ document.getElementById('projectForm').addEventListener('submit', function(event
   window.location.href = url;
 });
 
+
+const customFeatureSets = {
+  app: [
+    ['تسجيل حسابات المستخدمين','User accounts'],
+    ['تسجيل الدخول','Login'],
+    ['الإشعارات','Notifications'],
+    ['لوحة تحكم للإدارة','Admin dashboard'],
+    ['البحث والتصفية','Search and filters'],
+    ['الموقع والخرائط','Location and maps'],
+    ['المحادثات','Chat'],
+    ['حفظ البيانات','Data storage']
+  ],
+  website: [
+    ['صفحة رئيسية تعريفية','Landing page'],
+    ['صفحات متعددة','Multiple pages'],
+    ['نموذج تواصل','Contact form'],
+    ['لوحة تحكم','Admin dashboard'],
+    ['مدونة ومقالات','Blog and articles'],
+    ['دعم الهاتف والتابلت','Mobile and tablet support'],
+    ['تحسين محركات البحث','SEO'],
+    ['لغتان أو أكثر','Multiple languages']
+  ],
+  store: [
+    ['عرض المنتجات والتصنيفات','Products and categories'],
+    ['سلة المشتريات','Shopping cart'],
+    ['إدارة الطلبات','Order management'],
+    ['حسابات العملاء','Customer accounts'],
+    ['الدفع الإلكتروني','Online payments'],
+    ['إدارة المخزون','Inventory management'],
+    ['كوبونات الخصم','Discount coupons'],
+    ['لوحة تحكم للبائع','Seller dashboard']
+  ],
+  design: [
+    ['تصميم شعار','Logo design'],
+    ['هوية بصرية كاملة','Full visual identity'],
+    ['تصميم واجهات تطبيق','App UI design'],
+    ['تصميم واجهات موقع','Website UI design'],
+    ['ألوان وخطوط مخصصة','Custom colors and typography'],
+    ['تصاميم لمنصات التواصل','Social media designs']
+  ],
+  other: [
+    ['تسجيل حسابات المستخدمين','User accounts'],
+    ['لوحة تحكم','Admin dashboard'],
+    ['تصميم واجهة','Interface design'],
+    ['التواصل والإشعارات','Communication and notifications'],
+    ['ميزة مخصصة','Custom feature']
+  ]
+};
+
+let customStepIndex = 0;
+let customProjectType = '';
+
+function customText(ar, en) {
+  return currentLang === 'en' ? en : ar;
+}
+
+function renderCustomFeatures() {
+  const container = document.getElementById('customFeatureOptions');
+  const features = customFeatureSets[customProjectType] || customFeatureSets.other;
+  container.innerHTML = '';
+
+  features.forEach((feature, index) => {
+    const label = document.createElement('label');
+    const checkbox = document.createElement('input');
+    const span = document.createElement('span');
+
+    checkbox.type = 'checkbox';
+    checkbox.name = 'customFeature';
+    checkbox.value = feature[0];
+    checkbox.dataset.en = feature[1];
+
+    span.textContent = customText(feature[0], feature[1]);
+    label.appendChild(checkbox);
+    label.appendChild(span);
+    container.appendChild(label);
+  });
+}
+
+function updateCustomPreview() {
+  const typeInput = document.querySelector('input[name="customType"]:checked');
+  const typeNames = {
+    app: ['تطبيق أندرويد','Android app'],
+    website: ['موقع إلكتروني','Website'],
+    store: ['متجر إلكتروني','Online store'],
+    design: ['تصميم وهوية','Branding and design'],
+    other: ['مشروع آخر','Other project']
+  };
+  const selected = Array.from(document.querySelectorAll('input[name="customFeature"]:checked'));
+  const featureNames = selected.map(item =>
+    currentLang === 'en' ? item.dataset.en : item.value
+  );
+  const color = document.getElementById('customColor');
+  const style = document.getElementById('customStyle');
+  const name = document.getElementById('customName').value.trim();
+  const details = document.getElementById('customDetails').value.trim();
+  const type = typeInput ? typeNames[typeInput.value] : ['لم يتم الاختيار','Not selected'];
+  const selectedColor = color.options[color.selectedIndex].text;
+  const selectedStyle = style.options[style.selectedIndex].text;
+
+  const rows = [
+    [customText('الاسم','Name'), name || customText('لم يُكتب بعد','Not entered')],
+    [customText('نوع المشروع','Project type'), customText(type[0],type[1])],
+    [customText('الميزات','Features'), featureNames.length ? featureNames.join('، ') : customText('لم يتم اختيار ميزات','No features selected')],
+    [customText('اللون','Color'), selectedColor],
+    [customText('الأسلوب','Style'), selectedStyle],
+    [customText('التفاصيل','Details'), details || customText('لا توجد تفاصيل إضافية','No additional details')]
+  ];
+
+  document.getElementById('customPreviewContent').replaceChildren(
+    ...rows.map(([label,value]) => {
+      const p = document.createElement('p');
+      const strong = document.createElement('strong');
+      strong.textContent = label + ': ';
+      p.appendChild(strong);
+      p.appendChild(document.createTextNode(value));
+      return p;
+    })
+  );
+}
+
+function updateCustomizerLanguage() {
+  const label = document.getElementById('customStepLabel');
+  if (!label) return;
+
+  label.textContent = currentLang === 'en'
+    ? `Step ${customStepIndex + 1} of 4`
+    : `الخطوة ${customStepIndex + 1} من 4`;
+
+  document.getElementById('customPrev').textContent = customText('السابق','Back');
+  document.getElementById('customNext').textContent = customStepIndex === 3
+    ? customText('المراجعة','Review')
+    : customText('التالي ←','Next →');
+
+  document.querySelectorAll('[data-placeholder-ar]').forEach(element => {
+    element.placeholder = element.getAttribute('data-placeholder-' + currentLang);
+  });
+
+  if (customProjectType) {
+    document.querySelectorAll('#customFeatureOptions label').forEach(label => {
+      const input = label.querySelector('input');
+      label.querySelector('span').textContent =
+        currentLang === 'en' ? input.dataset.en : input.value;
+    });
+  }
+  updateCustomPreview();
+}
+
+function showCustomStep(index) {
+  customStepIndex = Math.max(0, Math.min(3, index));
+  document.querySelectorAll('.wizard-step').forEach((step, i) => {
+    step.classList.toggle('active', i === customStepIndex);
+  });
+
+  const percent = (customStepIndex + 1) * 25;
+  document.getElementById('customProgressBar').style.width = percent + '%';
+  document.getElementById('customProgressPercent').textContent = percent + '%';
+  document.getElementById('customPrev').disabled = customStepIndex === 0;
+  document.getElementById('customNext').style.display = customStepIndex === 3 ? 'none' : 'inline-block';
+
+  updateCustomizerLanguage();
+}
+
+document.querySelectorAll('input[name="customType"]').forEach(input => {
+  input.addEventListener('change', () => {
+    customProjectType = input.value;
+    renderCustomFeatures();
+    updateCustomPreview();
+  });
+});
+
+document.getElementById('customNext').addEventListener('click', () => {
+  if (customStepIndex === 0 && !document.querySelector('input[name="customType"]:checked')) {
+    alert(customText('يرجى اختيار نوع المشروع أولاً.','Please choose a project type first.'));
+    return;
+  }
+  if (customStepIndex === 3) return;
+  showCustomStep(customStepIndex + 1);
+});
+
+document.getElementById('customPrev').addEventListener('click', () => {
+  showCustomStep(customStepIndex - 1);
+});
+
+document.getElementById('customProjectForm').addEventListener('input', updateCustomPreview);
+document.getElementById('customProjectForm').addEventListener('change', updateCustomPreview);
+
 document.getElementById('customProjectForm').addEventListener('submit', function(event) {
   event.preventDefault();
 
   const name = document.getElementById('customName').value.trim();
-  const type = document.getElementById('customType').value;
-  const color = document.getElementById('customColor').value;
+  const typeInput = document.querySelector('input[name="customType"]:checked');
+  if (!typeInput || !name) {
+    alert(customText('يرجى إكمال الاسم ونوع المشروع.','Please enter your name and choose a project type.'));
+    return;
+  }
+
+  const typeNames = {
+    app: 'تطبيق أندرويد',
+    website: 'موقع إلكتروني',
+    store: 'متجر إلكتروني',
+    design: 'تصميم وهوية',
+    other: 'مشروع آخر'
+  };
+  const features = Array.from(document.querySelectorAll('input[name="customFeature"]:checked'))
+    .map(item => currentLang === 'en' ? item.dataset.en : item.value);
+  const color = document.getElementById('customColor').selectedOptions[0].text;
+  const style = document.getElementById('customStyle').selectedOptions[0].text;
   const details = document.getElementById('customDetails').value.trim();
 
-  const features = Array.from(
-    document.querySelectorAll('input[name="customFeature"]:checked')
-  ).map(item => item.value);
+  const message = currentLang === 'en'
+    ? `Hello Kayu Studio, I would like to request a project.\n\nName: ${name}\nProject: ${typeInput.value === 'app' ? 'Android app' : typeInput.value === 'website' ? 'Website' : typeInput.value === 'store' ? 'Online store' : typeInput.value === 'design' ? 'Branding and design' : 'Other project'}\nFeatures:\n${features.length ? features.map(x => '- ' + x).join('\n') : 'No specific features selected'}\nPreferred color: ${color}\nDesign style: ${style}\nAdditional details: ${details || 'None'}`
+    : `مرحباً Kayu Studio، أريد طلب مشروع جديد.\n\nالاسم: ${name}\nنوع المشروع: ${typeNames[typeInput.value]}\nالميزات:\n${features.length ? features.map(x => '- ' + x).join('\n') : 'لم أحدد ميزات'}\nاللون المفضل: ${color}\nأسلوب التصميم: ${style}\nتفاصيل إضافية: ${details || 'لا توجد'}\n\nأرجو التواصل معي لمناقشة المشروع.`;
 
-  const message = `مرحباً Kayu Studio، أريد تخصيص مشروع جديد.
-
-الاسم: ${name}
-نوع المشروع: ${type}
-الميزات المطلوبة:
-${features.length ? features.map(item => '- ' + item).join('\n') : 'لم أحدد ميزات إضافية'}
-
-اللون المفضل: ${color}
-تفاصيل المشروع: ${details || 'لا توجد تفاصيل إضافية'}
-
-أرجو التواصل معي لمناقشة المشروع.`;
-
-  const url = 'https://wa.me/962775240456?text=' + encodeURIComponent(message);
-  window.open(url, '_blank');
+  window.open('https://wa.me/962775240456?text=' + encodeURIComponent(message), '_blank');
 });
+
+showCustomStep(0);
+
 
 </script>
 
