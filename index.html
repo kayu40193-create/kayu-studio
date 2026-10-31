@@ -498,7 +498,96 @@ footer {
 body.en .project-form {
   text-align:left;
 }
-\n</style>
+\n
+/* Kayu Project Customizer */
+.customize-section {
+  padding: 90px 0;
+  background: linear-gradient(180deg, #0b1210, #080d0c);
+}
+.custom-project-form {
+  max-width: 850px;
+  margin: 35px auto 0;
+  display: grid;
+  gap: 22px;
+}
+.custom-step {
+  background: #101816;
+  border: 1px solid #1c3029;
+  border-radius: 18px;
+  padding: 26px;
+}
+.custom-number {
+  display: inline-flex;
+  color: #35c995;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+.custom-step h3 {
+  color: white;
+  margin: 0 0 20px;
+  font-size: 19px;
+}
+.custom-step select,
+.custom-step input[type="text"],
+.custom-step textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #294138;
+  border-radius: 10px;
+  background: #080d0c;
+  color: white;
+  font: inherit;
+  outline: none;
+}
+.custom-step select:focus,
+.custom-step input:focus,
+.custom-step textarea:focus {
+  border-color: #087f5b;
+}
+.custom-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.custom-options label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  background: #0b1210;
+  border: 1px solid #294138;
+  border-radius: 10px;
+  color: #e8f4ef;
+  cursor: pointer;
+}
+.custom-options label:has(input:checked) {
+  border-color: #087f5b;
+  background: #0d2920;
+}
+.custom-options input {
+  accent-color: #087f5b;
+  width: 17px;
+  height: 17px;
+}
+.custom-step textarea {
+  margin-top: 14px;
+  resize: vertical;
+}
+.custom-submit {
+  width: 100%;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  padding: 16px;
+}
+@media (max-width: 600px) {
+  .customize-section { padding: 60px 0; }
+  .custom-step { padding: 19px; }
+  .custom-options { grid-template-columns: 1fr; }
+}
+
+</style>
   <meta name="google-site-verification" content="h0Yko_gIZY-bKoMpICo8nzxv6b9pDpHWkinCpf_JxmM" />
   <meta name="google-site-verification" content="rQLrY4LGWHJDWfK9FeyJKc2PKPqHp7NV3XmwVh5kR6Y" />
 </head>
@@ -513,6 +602,7 @@ body.en .project-form {
     <nav class="links" id="navLinks">
       <a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
       <a href="#services" data-ar="خدماتنا" data-en="Services">خدماتنا</a>
+      <a href="#customize" data-ar="خصّص مشروعك" data-en="Customize Project">خصّص مشروعك</a>
       <a href="#work" data-ar="أعمالنا" data-en="Portfolio">أعمالنا</a>
       <a href="#about" data-ar="من نحن" data-en="About">من نحن</a>
       <a href="#contact" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a>
@@ -593,6 +683,67 @@ body.en .project-form {
       </article>
 
     </div>
+  </div>
+</section>
+
+
+<section id="customize" class="customize-section">
+  <div class="container">
+    <div class="section-head">
+      <div class="small-title" data-ar="مشروعك يبدأ من هنا" data-en="YOUR PROJECT STARTS HERE">مشروعك يبدأ من هنا</div>
+      <h2 data-ar="خصّص مشروعك بنفسك." data-en="Customize Your Project.">خصّص مشروعك بنفسك.</h2>
+      <p data-ar="اختر ما تحتاجه، وسنساعدك على تحويل فكرتك إلى مشروع حقيقي." data-en="Choose what you need, and we'll help turn your idea into reality.">اختر ما تحتاجه، وسنساعدك على تحويل فكرتك إلى مشروع حقيقي.</p>
+    </div>
+
+    <form id="customProjectForm" class="custom-project-form">
+      <div class="custom-step">
+        <span class="custom-number">01</span>
+        <h3 data-ar="ما نوع المشروع الذي تريده؟" data-en="What type of project do you need?">ما نوع المشروع الذي تريده؟</h3>
+        <select id="customType" required>
+          <option value="" data-ar="اختر نوع المشروع" data-en="Choose project type">اختر نوع المشروع</option>
+          <option value="تطبيق أندرويد">تطبيق أندرويد</option>
+          <option value="موقع إلكتروني">موقع إلكتروني</option>
+          <option value="متجر إلكتروني">متجر إلكتروني</option>
+          <option value="تصميم شعار أو واجهة">تصميم شعار أو واجهة</option>
+          <option value="مشروع آخر">مشروع آخر</option>
+        </select>
+      </div>
+
+      <div class="custom-step">
+        <span class="custom-number">02</span>
+        <h3 data-ar="ما الميزات التي تحتاجها؟" data-en="Which features do you need?">ما الميزات التي تحتاجها؟</h3>
+        <div class="custom-options">
+          <label><input type="checkbox" name="customFeature" value="تسجيل الدخول والحسابات"><span>تسجيل الدخول والحسابات</span></label>
+          <label><input type="checkbox" name="customFeature" value="لوحة تحكم للإدارة"><span>لوحة تحكم للإدارة</span></label>
+          <label><input type="checkbox" name="customFeature" value="الدفع الإلكتروني"><span>الدفع الإلكتروني</span></label>
+          <label><input type="checkbox" name="customFeature" value="الإشعارات"><span>الإشعارات</span></label>
+          <label><input type="checkbox" name="customFeature" value="المحادثات والتواصل"><span>المحادثات والتواصل</span></label>
+          <label><input type="checkbox" name="customFeature" value="البحث والتصفية"><span>البحث والتصفية</span></label>
+        </div>
+      </div>
+
+      <div class="custom-step">
+        <span class="custom-number">03</span>
+        <h3 data-ar="اختر اللون المفضل" data-en="Choose your preferred color">اختر اللون المفضل</h3>
+        <select id="customColor">
+          <option value="الأخضر">الأخضر</option>
+          <option value="الأزرق">الأزرق</option>
+          <option value="الأسود">الأسود</option>
+          <option value="الأبيض">الأبيض</option>
+          <option value="ألوان متعددة">ألوان متعددة</option>
+          <option value="اترك الاختيار للاستوديو">اترك الاختيار للاستوديو</option>
+        </select>
+      </div>
+
+      <div class="custom-step">
+        <span class="custom-number">04</span>
+        <h3 data-ar="أخبرنا المزيد عن فكرتك" data-en="Tell us more about your idea">أخبرنا المزيد عن فكرتك</h3>
+        <input id="customName" type="text" placeholder="اسمك" required>
+        <textarea id="customDetails" rows="5" placeholder="اكتب تفاصيل إضافية عن مشروعك..."></textarea>
+      </div>
+
+      <button type="submit" class="btn primary custom-submit" data-ar="إرسال تفاصيل مشروعي ↗" data-en="Send My Project Details ↗">إرسال تفاصيل مشروعي ↗</button>
+    </form>
   </div>
 </section>
 
@@ -747,6 +898,34 @@ document.getElementById('projectForm').addEventListener('submit', function(event
 
   const url = 'https://wa.me/962775240456?text=' + encodeURIComponent(message);
   window.location.href = url;
+});
+
+document.getElementById('customProjectForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('customName').value.trim();
+  const type = document.getElementById('customType').value;
+  const color = document.getElementById('customColor').value;
+  const details = document.getElementById('customDetails').value.trim();
+
+  const features = Array.from(
+    document.querySelectorAll('input[name="customFeature"]:checked')
+  ).map(item => item.value);
+
+  const message = `مرحباً Kayu Studio، أريد تخصيص مشروع جديد.
+
+الاسم: ${name}
+نوع المشروع: ${type}
+الميزات المطلوبة:
+${features.length ? features.map(item => '- ' + item).join('\n') : 'لم أحدد ميزات إضافية'}
+
+اللون المفضل: ${color}
+تفاصيل المشروع: ${details || 'لا توجد تفاصيل إضافية'}
+
+أرجو التواصل معي لمناقشة المشروع.`;
+
+  const url = 'https://wa.me/962775240456?text=' + encodeURIComponent(message);
+  window.open(url, '_blank');
 });
 
 </script>
